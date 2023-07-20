@@ -1,0 +1,12 @@
+---
+- name: Server Report
+  hosts: all
+  become: yes
+  gather_facts: true
+  tasks:
+    - name: Report Server Facts
+      ansible.builtin.debug:
+        msg:
+          - "Hostname: {{ ansible_fqdn }}"
+          - "Release Name: {{ ansible_distribution_release }}"
+          - "Nameservers: {{ ansible_dns['nameservers'] }}"
